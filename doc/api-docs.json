@@ -1,0 +1,111 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "bill-controller",
+      "description": "Bill Controller"
+    }
+  ],
+  "paths": {
+    "/assigment/retail/bill/net-payment-calculation": {
+      "post": {
+        "tags": [
+          "bill-controller"
+        ],
+        "summary": "calculateTotalAmount",
+        "operationId": "calculateTotalAmountUsingPOST",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "*/*"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "details",
+            "description": "details",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/BillDetailsDto"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/NetPayablePayment"
+            }
+          },
+          "201": {
+            "description": "Created"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "BillDetailsDto": {
+      "type": "object",
+      "properties": {
+        "products": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/ProductDto"
+          }
+        },
+        "userName": {
+          "type": "string"
+        }
+      },
+      "title": "BillDetailsDto"
+    },
+    "NetPayablePayment": {
+      "type": "object",
+      "properties": {
+        "totalPrice": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "title": "NetPayablePayment"
+    },
+    "ProductDto": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "productId": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "ProductDto"
+    }
+  }
+}
