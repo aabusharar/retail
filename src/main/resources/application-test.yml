@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:retaildb;DB_CLOSE_DELAY=-1
+    driverClassName: org.h2.Driver
+    username: test
+    password: test
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  flyway:
+    url: jdbc:h2:mem:retaildb;DB_CLOSE_DELAY=-1
+    baseline-on-migrate: true
+    user: test
+    password: test
+    create-schemas: true
+    enabled: false
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
