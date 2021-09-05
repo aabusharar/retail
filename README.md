@@ -35,7 +35,7 @@ Alternatively you can use the Spring Boot Maven plugin like so:
 * [UML-Diagram-Link-PDF]
 
 ##### **H2 DB**
-* After Running the application successfully, you can add data to H2 DB I'm using by opening [H2-Link]
+* After Running the application successfully, you can add data to H2 DB by opening [H2-Link]
   and filling the following information:
     * username -> test
     * password -> test
